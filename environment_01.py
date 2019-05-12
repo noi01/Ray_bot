@@ -111,14 +111,16 @@ class Env(Environment):
         """ the currently visible state of the world (the observation may be stochastic - repeated calls returning different values) 
             :rtype: by default, this is assumed to be a numpy array of doubles
         """
-            obj_temp = sensor.readObjTempC()
-    die_temp = sensor.readDieTempC()
-    print('Object temperature: {0:0.3F}*C'.format(obj_temp))
-    print('   Die temperature: {0:0.3F}*C'.format(die_temp))
-    sleep(0.2)
-        sensor_value = rc_time(photoresistor_sensor) #sensor messurment
+        obj_temp = sensor_temp.readObjTempC()
+        die_temp = sensor_temp.readDieTempC()
+        
+        temp_diff = (obj_temp - die_temp)*10
+        temp_observation = round(temp_diff, 0)
+        print('Object temperature diff: {0:0.3F}*C'.format(temp_observation))
+        sleep(0.2)
+        sensor_value = temp_observation #sensor messurment
 # return needs to be formated in such way to be digestable by Pybrain library, I think... otherwise there are errors
-        return [float(sensor_value),]
+        return [float(temp_observation),]
         
                     
     def performAction(self, action):
