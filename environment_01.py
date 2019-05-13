@@ -103,7 +103,7 @@ class Env(Environment):
     indim = 2
     
     # the number of sensor values the environment produces - analog in photoresistor_sensor
-    outdim = 1024
+    outdim = 165
     
     
     
@@ -114,10 +114,10 @@ class Env(Environment):
         obj_temp = sensor_temp.readObjTempC()
         die_temp = sensor_temp.readDieTempC()
         
-        temp_diff = (obj_temp - die_temp)*10
+        temp_diff = ((obj_temp+40) - (die_temp+40))*10
         temp_observation = round(temp_diff, 0)
         print('Object temperature diff: {0:0.3F}*C'.format(temp_observation))
-        sleep(0.2)
+        sleep(3)
         sensor_value = temp_observation #sensor messurment
 # return needs to be formated in such way to be digestable by Pybrain library, I think... otherwise there are errors
         return [float(temp_observation),]

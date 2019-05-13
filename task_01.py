@@ -10,26 +10,6 @@ import time
 #Sensors that are used as part of task assesment
 GPIO.setmode(GPIO.BCM)
 
-pir_sensor = 17
-
-def PIR_sensing(pir_sensor):
-    
-    GPIO.setup(pir_sensor, GPIO.IN)
-    current_state = 0
-
-    time.sleep(0.1)
-    current_state = GPIO.input(pir_sensor)
-    
-    #return 1 or 0 
-    if current_state == 1:
-       return 1 
-
-    elif current_state == 0:
-        return 0
-
-
-
-
 class Task(Task):
     """ A task is associating a purpose with an environment. It decides how to evaluate the observations, potentially returning reinforcement rewards or fitness values. 
     Furthermore it is a filter for what should be visible to the agent.
@@ -58,27 +38,18 @@ class Task(Task):
         f = 0 #will chang to true (1) to when if statement is fullfilled, otherwise false
         
         print ("Sensor read: ", sensors)
-        print ("PIR movement: ", PIR_sensing(pir_sensor))
+
         
-        if any(x>=300 for x in sensors) and PIR_sensing(pir_sensor)==0:
+        if any(x>=10 for x in sensors):
 #           if sensors >= 500 : #works in python2
             reward = 1
             f = 1
 
-        elif any(x>=300 for x in sensors) and PIR_sensing(pir_sensor)==1:
-            reward = 0
-            f = 0
-        
-        elif any(x<=300 for x in sensors) and PIR_sensing(pir_sensor)==1:
-            reward = 1
-            f = 1
             
-        elif any(x<=300 for x in sensors) and PIR_sensing(pir_sensor)==0:
+        elif any(x<10 for x in sensors):
             reward = 0
             f = 0  
-
-
-        
+  
         
         # retrieve last reward - save current received reward
         cur_reward = self.lastreward
