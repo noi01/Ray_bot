@@ -15,6 +15,54 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+def Rotation():
+#    position A
+    kit.servo[0].angle = 90
+    kit.servo[12].angle = 90
+    sleep(0.2)    
+    kit.servo[1].angle = 90
+    kit.servo[13].angle = 90
+    sleep(0.2)
+    kit.servo[2].angle = 90
+    kit.servo[15].angle = 90
+    sleep(0.2)
+    kit.servo[3].angle = 90
+    kit.servo[14].angle = 90
+    sleep(0.2)
+    
+#   rotate
+    kit.servo[0].angle = 125
+    kit.servo[1].angle = 125
+    kit.servo[2].angle = 125
+    kit.servo[3].angle = 125
+    sleep(0.2)
+
+
+#   steps align
+    kit.servo[12].angle = 70
+    kit.servo[0].angle = 90
+    sleep(0.1)
+    kit.servo[12].angle = 90
+    sleep(0.2)
+    
+    kit.servo[15].angle = 110
+    kit.servo[2].angle = 90
+    sleep(0.1)
+    kit.servo[15].angle = 90
+    sleep(0.2)
+    
+    kit.servo[13].angle = 110
+    kit.servo[1].angle = 90
+    sleep(0.1)
+    kit.servo[13].angle = 90
+    sleep(0.2)
+    
+    kit.servo[14].angle = 70
+    kit.servo[3].angle = 90
+    sleep(0.1)
+    kit.servo[14].angle = 90
+    sleep(0.2)
+
 #exhibition sensors
 
 PIR = 17
@@ -44,11 +92,13 @@ def ultrasonic (ECHO, TRIG):
     stop = time.time()
 
     DISTANCE = (stop - start) * 17000
+
+#    DISTANCE = 100
     
-    if DISTANCE < 40:
+    if DISTANCE < 200:
        return 1 
 #        print("sensor 1")
-    elif DISTANCE >= 40:
+    elif DISTANCE >= 200:
         return 0
 #        print ("sensor 0")
     else :
@@ -76,7 +126,7 @@ def PIR_sensing (PIR):
 
 # define action-value table:
 # number of environment states:
-# 1024 states agent can be in the environment - comfortable / uncomfortable
+# 165 states agent can be in the environment - comfortable / uncomfortable
 #
 # number of actions:
 # 3 the number of action values the environment accepts -  Foreward, Backward and Snooze
@@ -132,7 +182,7 @@ while True:
         print("Waiting for humans")
         
     elif PIR_sensing(PIR)==1 and ultrasonic(ECHO, TRIG)==0:
-        
+        Rotation()
         print("edge alarm")
 # Clean-up actions   
 try:
