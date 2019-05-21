@@ -17,16 +17,16 @@ kit = ServoKit(channels=16)
 def Rotation():
 #    position A
     kit.servo[0].angle = 90
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.2)    
     kit.servo[1].angle = 90
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     kit.servo[2].angle = 90
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     kit.servo[3].angle = 90
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
     
 #   rotate
@@ -38,51 +38,51 @@ def Rotation():
 
 
 #   steps align
-    kit.servo[12].angle = 70
+    kit.servo[8].angle = 70
     kit.servo[0].angle = 90
     sleep(0.1)
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.2)
     
-    kit.servo[15].angle = 110
+    kit.servo[10].angle = 110
     kit.servo[2].angle = 90
     sleep(0.1)
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     
-    kit.servo[13].angle = 110
+    kit.servo[9].angle = 110
     kit.servo[1].angle = 90
     sleep(0.1)
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     
-    kit.servo[14].angle = 70
+    kit.servo[11].angle = 70
     kit.servo[3].angle = 90
     sleep(0.1)
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
 
 def Forward():
 #    position A
     kit.servo[0].angle = 110
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.1)    
     kit.servo[1].angle = 100
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     kit.servo[2].angle = 80
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     kit.servo[3].angle = 70
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
     
 #    step front left leg
-    kit.servo[13].angle = 120
+    kit.servo[9].angle = 70
     kit.servo[1].angle = 60
 
     sleep(0.2)
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
 
 
     
@@ -97,95 +97,95 @@ def Forward():
     sleep(0.2)
     
 #   step 2
-    kit.servo[14].angle = 60
+    kit.servo[11].angle = 110
     kit.servo[3].angle = 100
 
     sleep(0.2)
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
 
 #   step 3
-    kit.servo[12].angle = 60
+    kit.servo[8].angle = 110
     kit.servo[0].angle = 120
 
     sleep(0.2)
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
 
 #   position C
     kit.servo[0].angle = 110
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.2)    
     kit.servo[1].angle = 100
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     kit.servo[2].angle = 120
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     kit.servo[3].angle = 70
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
     
     #   step 4
-    kit.servo[15].angle = 120
+    kit.servo[10].angle = 70
     kit.servo[2].angle = 80
 
     sleep(0.2)
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
 
 def Transition_A():
-    kit.servo[12].angle = 60   
+    kit.servo[8].angle = 60   
     kit.servo[0].angle = 90
     sleep(0.1)
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.2)
     
-    kit.servo[13].angle = 120
+    kit.servo[9].angle = 120
     kit.servo[1].angle = 90
     sleep(0.1)
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     
-    kit.servo[15].angle = 120
+    kit.servo[10].angle = 120
     kit.servo[2].angle = 90
     sleep(0.1)
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     
-    kit.servo[14].angle = 60
+    kit.servo[11].angle = 60
     kit.servo[3].angle = 90
     sleep(0.1)
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
 
 def Transition_B():
-    kit.servo[12].angle = 60   
+    kit.servo[8].angle = 130   
     kit.servo[0].angle = 110
     sleep(0.1)
-    kit.servo[12].angle = 90
+    kit.servo[8].angle = 90
     sleep(0.2)
     
-    kit.servo[13].angle = 120
+    kit.servo[9].angle = 120
     kit.servo[1].angle = 120
     sleep(0.1)
-    kit.servo[13].angle = 90
+    kit.servo[9].angle = 90
     sleep(0.2)
     
-    kit.servo[15].angle = 120
+    kit.servo[10].angle = 120
     kit.servo[2].angle = 80
     sleep(0.1)
-    kit.servo[15].angle = 90
+    kit.servo[10].angle = 90
     sleep(0.2)
     
-    kit.servo[14].angle = 60
+    kit.servo[11].angle = 60
     kit.servo[3].angle = 70
     sleep(0.1)
-    kit.servo[14].angle = 90
+    kit.servo[11].angle = 90
     sleep(0.2)
 
 
 for x in range(10):
-    Rotation()
-    Transition_B()
+#    Rotation()
+#    Transition_B()
     Forward()
-    Transition_A()
+# 
     print ("cycle")
     input("Press enter to continue")
