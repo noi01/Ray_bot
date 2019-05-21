@@ -92,10 +92,7 @@ def Snooze():
 
 #define the sensor pins that goes to the circuit
 
-import Adafruit_TMP.TMP006 as TMP006
-
-sensor_temp = TMP006.TMP006(address=0x41, busnum=1)
-sensor_temp.begin()
+import Adafruit_DHT
 
 
 class Env(Environment):
@@ -113,14 +110,20 @@ class Env(Environment):
         """ the currently visible state of the world (the observation may be stochastic - repeated calls returning different values) 
             :rtype: by default, this is assumed to be a numpy array of doubles
         """
-        obj_temp = sensor_temp.readObjTempC()
-        die_temp = sensor_temp.readDieTempC()
-        
-        temp_diff = ((obj_temp+40) - (die_temp+40))*10
-        temp_observation = round(temp_diff, 0)
-        print('Object temperature diff: {0:0.3F}*C'.format(temp_observation))
-        sleep(3)
-        sensor_value = temp_observation #sensor messurment
+#        obj_temp = sensor_temp.readObjTempC()
+#        die_temp = sensor_temp.readDieTempC()
+#        
+#        temp_diff = ((obj_temp+40) - (die_temp+40))*10
+#        temp_observation = round(temp_diff, 0)
+#        print('Object temperature diff: {0:0.3F}*C'.format(temp_observation))
+#        sleep(3)
+        sensor=Adafruit_DHT.DHT11
+        gpio=27
+        humidity, temperature = Adafruit_DHT.read_retry(sensor, gpio)
+#        print('Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity))
+        sensor_value = temperature #sensor messurment
+        temp_observation = sensor_value
+#        print (temp_observation)
 # return needs to be formated in such way to be digestable by Pybrain library, I think... otherwise there are errors
         return [float(temp_observation),]
         
@@ -138,7 +141,7 @@ class Env(Environment):
 
         elif action == 0:
             Snooze()
-            print ("ENV_PerformAction:")
+            print ("ENV_PerformAction:Snooze")
             time.sleep(1)
             
 
