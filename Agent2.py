@@ -21,51 +21,40 @@ kit = ServoKit(channels=16)
 
 
 def Rotation():
-#    position A
-    kit.servo[0].angle = 90
-    kit.servo[8].angle = 90
-    sleep(0.2)    
-    kit.servo[1].angle = 90
-    kit.servo[9].angle = 90
-    sleep(0.2)
-    kit.servo[2].angle = 90
-    kit.servo[10].angle = 90
-    sleep(0.2)
-    kit.servo[3].angle = 90
-    kit.servo[11].angle = 90
-    sleep(0.2)
-    
-#   rotate
-    kit.servo[0].angle = 125
-    kit.servo[1].angle = 125
-    kit.servo[2].angle = 125
-    kit.servo[3].angle = 125
-    sleep(0.2)
-
-
-#   steps align
-    kit.servo[8].angle = 70
-    kit.servo[0].angle = 90
-    sleep(0.1)
-    kit.servo[8].angle = 90
-    sleep(0.2)
-    
     kit.servo[10].angle = 110
-    kit.servo[2].angle = 90
+    sleep(0.1)
+    kit.servo[11].angle = 110
+    sleep(0.1)
+    kit.servo[2].angle = 110
+    sleep(0.1)
+    kit.servo[3].angle = 110
+    sleep(0.1)
+    
+    kit.servo[8].angle = 130
     sleep(0.1)
     kit.servo[10].angle = 90
     sleep(0.2)
-    
-    kit.servo[9].angle = 110
-    kit.servo[1].angle = 90
-    sleep(0.1)
-    kit.servo[9].angle = 90
-    sleep(0.2)
-    
-    kit.servo[11].angle = 70
-    kit.servo[3].angle = 90
+    kit.servo[8].angle = 90
+
+    kit.servo[9].angle = 50
     sleep(0.1)
     kit.servo[11].angle = 90
+    sleep(0.2)
+    kit.servo[9].angle = 80
+
+    kit.servo[0].angle = 50
+    sleep(0.1)
+    kit.servo[2].angle = 90
+    sleep(0.2)
+    kit.servo[0].angle = 80
+
+    
+    kit.servo[1].angle = 130
+    sleep(0.5)
+    kit.servo[3].angle = 90
+    sleep(0.2)
+    kit.servo[1].angle = 105
+    
     sleep(0.2)
 
 #exhibition sensors
@@ -83,7 +72,7 @@ def ultrasonic (ECHO, TRIG):
 
     time.sleep(0.1)
 
-    print ("messuring ultrasound...")
+    print ("AGENT_messuring ultrasound...")
     GPIO.output(TRIG, 1)
     time.sleep(0.1)
     GPIO.output(TRIG, 0)
@@ -189,11 +178,13 @@ while True:
         # save action value table to .csv file
     elif PIR_sensing(PIR)==0 and ultrasonic(ECHO, TRIG)==1:
         
-        print("Waiting for humans")
+        print("AGENT_Waiting for humans")
         
     elif PIR_sensing(PIR)==1 and ultrasonic(ECHO, TRIG)==0:
         Rotation()
-        print("edge alarm")
+        Rotation()
+        Rotation()
+        print("AGENT_edge alarm")
 # Clean-up actions   
 try:
     pass

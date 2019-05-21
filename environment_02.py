@@ -15,73 +15,75 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
 def Forward():
-#    position A
-    kit.servo[0].angle = 110
+    
+    #   position C
+    kit.servo[10].angle = 105
     kit.servo[8].angle = 90
     sleep(0.2)    
-    kit.servo[1].angle = 100
-    kit.servo[9].angle = 90
+    kit.servo[11].angle = 120
+    kit.servo[9].angle = 80
     sleep(0.2)
-    kit.servo[2].angle = 80
-    kit.servo[10].angle = 90
-    sleep(0.2)
-    kit.servo[3].angle = 70
-    kit.servo[11].angle = 90
-    sleep(0.2)
-    
-#    step front left leg
-    kit.servo[9].angle = 135
-    kit.servo[1].angle = 60
-
-    sleep(0.2)
-    kit.servo[9].angle = 90
-
-
-    
-#   position B
+    kit.servo[2].angle = 60
     kit.servo[0].angle = 80
-    sleep(0.2)    
-    kit.servo[1].angle = 70
     sleep(0.2)
-    kit.servo[2].angle = 110
-    sleep(0.2)
-    kit.servo[3].angle = 60
-    sleep(0.2)
-    
-#   step 2
-    kit.servo[11].angle = 60
-    kit.servo[3].angle = 100
-
-    sleep(0.2)
-    kit.servo[11].angle = 90
-
-#   step 3
-    kit.servo[8].angle = 60
-    kit.servo[0].angle = 120
-
-    sleep(0.2)
-    kit.servo[8].angle = 90
-
-#   position C
-    kit.servo[0].angle = 110
-    kit.servo[8].angle = 90
-    sleep(0.2)    
-    kit.servo[1].angle = 100
-    kit.servo[9].angle = 90
-    sleep(0.2)
-    kit.servo[2].angle = 120
-    kit.servo[10].angle = 90
-    sleep(0.2)
-    kit.servo[3].angle = 70
-    kit.servo[11].angle = 90
+    kit.servo[3].angle = 140
+    kit.servo[1].angle = 105
     sleep(0.2)
     
     #   step 4
-    kit.servo[10].angle = 120
-    kit.servo[2].angle = 80
+    kit.servo[1].angle = 130
+    sleep(0.1)
+    kit.servo[3].angle = 75
+    sleep(0.2)
+    kit.servo[1].angle = 105
+    
+#    position A
+    kit.servo[10].angle = 105
+    kit.servo[8].angle = 90
+    sleep(0.1)    
+    kit.servo[11].angle = 120
+    kit.servo[9].angle = 80
+    sleep(0.2)
+    kit.servo[2].angle = 60
+    kit.servo[0].angle = 80
+    sleep(0.2)
+    kit.servo[3].angle = 75
+    kit.servo[1].angle = 105
+    sleep(0.2)
+    
+#    step front left leg
+    kit.servo[8].angle = 130
+    sleep(0.2)
+    kit.servo[10].angle = 40
 
     sleep(0.2)
-    kit.servo[10].angle = 90    
+    kit.servo[8].angle = 90
+
+
+    
+#   moveA
+    kit.servo[10].angle = 60
+    sleep(0.2)    
+    kit.servo[11].angle = 75
+    sleep(0.2)
+    kit.servo[2].angle = 40
+    sleep(0.2)
+    kit.servo[3].angle = 120
+    sleep(0.2)
+    
+#   step 2
+    kit.servo[0].angle = 50
+    sleep(0.1)
+    kit.servo[2].angle = 105
+    sleep(0.2)
+    kit.servo[0].angle = 95
+
+#   step 3
+    kit.servo[9].angle = 50
+    sleep(0.1)
+    kit.servo[11].angle = 140
+    sleep(0.2)
+    kit.servo[9].angle = 80
 
 def Snooze():
     print("Snooze")
@@ -130,12 +132,13 @@ class Env(Environment):
         """
         print ("Action performed: ", action)
         if  action == 1:
-            print ("I Walk")
+            print ("ENV_PerformAction:Walk")
             Forward()
             time.sleep(1)
 
         elif action == 0:
             Snooze()
+            print ("ENV_PerformAction:")
             time.sleep(1)
             
 

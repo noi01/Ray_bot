@@ -32,12 +32,12 @@ class Task(Task):
     
     def getReward(self):
         """ Compute and return the current reward (i.e. corresponding to the last action performed) """
-        sensors = self.env.getSensors()#input from environment_01.py
+        sensors = self.env.getSensors()#input from environment_02.py
 
         reward = 0
         f = 0 #will chang to true (1) to when if statement is fullfilled, otherwise false
         
-        print ("Sensor read: ", sensors)
+        print ("TSK_Sensor read: ", sensors)
 
         
         if any(x>=10 for x in sensors):
@@ -55,7 +55,7 @@ class Task(Task):
         cur_reward = self.lastreward
         self.lastreward = reward
         
-        print ("Reward: ", cur_reward)
+        print ("TSK_Reward: ", cur_reward)
     
         return cur_reward
         
